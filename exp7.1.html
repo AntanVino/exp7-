@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Moving Car</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible"content="IE=edge">
+        <meta name="viewport"content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $(document).keydown(function(event){
+                    var car = $('#car')
+                    var arrow = {left:37, up:38, right:39, down:40 };
+                    
+                    switch(event.which){
+                        case arrow.right: car.css('transform','rotate(360deg)');
+                                          car.animate({left:'+=5px'},1); 
+                                          break;
+                        case arrow.down:  car.css('transform','rotate(90deg)');
+                                          car.animate({top:'+=5px'},1);
+                                          break;
+                        case arrow.up:    car.css('transform','rotate(270deg)');
+                                          car.animate({top:'-=5px'},1);
+                                          break;
+                        case arrow.left:  car.css('transform','rotateY(180deg)');
+                                          car.animate({left:'-=5px'},1);
+                                          break;
+                    }
+                    var car = $('#car');
+            var car_pos = $('#car').position();
+            var l = car_pos.left;
+            var t = car_pos.top;
+
+            
+
+            if (l>0&&l<268  ) {
+                if(t<85 || t>250)
+                    {
+                        $('#car').fadeOut('slow');
+                        $('#car').fadeIn('slow');  
+                    }
+            }
+            if (l>470) {
+                if(t<85 || t>250)
+                    {
+                        $('#car').fadeOut('slow');
+                        $('#car').fadeIn('slow');  
+                    }
+            }
+            
+            })
+        })
+        </script>
+        <style>
+            *{
+                margin: 0px;
+                padding: 0px;
+                box-sizing: border-box;
+            }
+            .r1 {
+                  position: fixed;
+                  z-index: 0;
+                  top:0px;
+                  width: 200px;
+                  height: 800px;
+                  left: 40%;
+                  background-color: black;
+            }
+            .r2{
+                position: fixed;
+                top:100px;
+                z-index: 1;
+                width: 100%;
+                height: 200px;
+                background-color: black;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div id="car"style="position:absolute;z-index:3;left:5px; top:100px;width:80px;height:50px;">
+            <img id="car"src="data:image/png;base64,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"alt=""width="80"height="50">
+        </div>
+        <br>
+        <div class="r1"></div>
+        <div class="r2"></div>
+  
+    </body>
+    
+
+</html>
